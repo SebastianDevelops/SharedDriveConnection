@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SharedDriveConnection
 {
+    using SharedDriveConnection.Win32Resources;
     using System.ComponentModel;
     using System.Net;
 
@@ -141,67 +142,4 @@ namespace SharedDriveConnection
             Dispose(false);
         }
     }
-
-    #region Objects needed for the Win32 functions
-#pragma warning disable 1591
-
-    /// <summary>
-    /// The net resource.
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public class NetResource
-    {
-        public ResourceScope Scope;
-        public ResourceType ResourceType;
-        public ResourceDisplaytype DisplayType;
-        public int Usage;
-        public string LocalName;
-        public string RemoteName;
-        public string Comment;
-        public string Provider;
-    }
-
-    /// <summary>
-    /// The resource scope.
-    /// </summary>
-    public enum ResourceScope
-    {
-        Connected = 1,
-        GlobalNetwork,
-        Remembered,
-        Recent,
-        Context
-    };
-
-    /// <summary>
-    /// The resource type.
-    /// </summary>
-    public enum ResourceType
-    {
-        Any = 0,
-        Disk = 1,
-        Print = 2,
-        Reserved = 8,
-    }
-
-    /// <summary>
-    /// The resource displaytype.
-    /// </summary>
-    public enum ResourceDisplaytype
-    {
-        Generic = 0x0,
-        Domain = 0x01,
-        Server = 0x02,
-        Share = 0x03,
-        File = 0x04,
-        Group = 0x05,
-        Network = 0x06,
-        Root = 0x07,
-        Shareadmin = 0x08,
-        Directory = 0x09,
-        Tree = 0x0a,
-        Ndscontainer = 0x0b
-    }
-#pragma warning restore 1591
-    #endregion
 }
